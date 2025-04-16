@@ -75,35 +75,22 @@
       document.getElementById("taskSection").style.display = "block";
     }
 
-    function startTest() {
-      // Start timer
-      timerStart = Date.now();
+    function startTest() 
+    {
+    const age = document.getElementById("age").value;
+    const tech = document.getElementById("proficiency").value;
+    const versions = ['A','C'];
+    const chosenVersion = versions[Math.floor(Math.random() * versions.length)];
+    const startTime = new Date().toISOString();
 
-      // Get demographic info
-      const age = document.getElementById("age").value;
-      const proficiency = document.getElementById("proficiency").value;
+    // Store in localStorage
+    localStorage.setItem("age", age);
+    localStorage.setItem("proficiency", tech);
+    localStorage.setItem("version", chosenVersion);
+    localStorage.setItem("startTime", startTime);
 
-      // Choose random version
-      const versions = ['A', 'B', 'C', 'D'];
-      const chosenVersion = versions[Math.floor(Math.random() * versions.length)];
-
-      // Save data to Google Sheets via Apps Script
-      fetch("YOUR_SCRIPT_URL_HERE", {
-        method: "POST",
-        mode: "no-cors", // prevents CORS error (use 'cors' if your script returns JSON)
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
-          age,
-          proficiency,
-          version: chosenVersion,
-          timestamp: new Date().toISOString(),
-        }),
-      });
-
-      // Redirect to version
-      window.location.href = `${chosenVersion}.html?start=${timerStart}`;
+    const startTimestamp = new Date(startTime).getTime();
+    window.location.href = `${chosenVersion}.html?start=${startTimestamp}`;
     }
   </script>
 </body>
