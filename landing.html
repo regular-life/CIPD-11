@@ -1,7 +1,110 @@
-<h1>Welcome! Choose a Version</h1>
-<ul>
-  <li><a href="A. Almost Plaintext.html">A. Almost Plaintext</a></li>
-  <li><a href="B. Icons and Hierarchy.html">B. Icons and Hierarchy</a></li>
-  <li><a href="C. Modals.html">C. Modals</a></li>
-  <li><a href="D. Tooltips.html">D. Tooltips</a></li>
-</ul>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Life Insurance Test</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #f0f2f5;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+    #formContainer {
+      background: white;
+      padding: 30px;
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.2);
+      width: 300px;
+      text-align: center;
+    }
+    input, select, button {
+      margin: 10px 0;
+      width: 100%;
+      padding: 8px;
+    }
+    #taskSection {
+      display: none;
+      margin-top: 20px;
+    }
+  </style>
+</head>
+<body>
+  <div id="formContainer">
+    <h2>Enter Demographics</h2>
+    <label for="age">Age:</label>
+    <input type="number" id="age" name="age" min="10" max="100" required />
+
+    <label for="proficiency">Tech Proficiency:</label>
+    <select id="proficiency" name="proficiency">
+      <option value="Novice">Novice</option>
+      <option value="Intermediate">Intermediate</option>
+      <option value="Advanced">Advanced</option>
+    </select>
+
+    <button onclick="showTask()">Next</button>
+
+    <div id="taskSection">
+      <h3>Task</h3>
+      <p>
+        You are helping a 28-year-old friend who has just started earning. They want to:<br><br>
+        - Build savings for long-term goals like retirement<br>
+        - Have life insurance protection<br>
+        - Avoid undergoing a medical test if possible<br>
+        - Prefer tax benefits on their premium payments<br><br>
+        Help them choose a suitable plan.
+      </p>
+      <button id="startTestBtn" onclick="startTest()">Start Test</button>
+    </div>
+  </div>
+
+  <script>
+    let timerStart = null;
+
+    function showTask() {
+      const age = document.getElementById("age").value;
+      const proficiency = document.getElementById("proficiency").value;
+
+      if (!age || !proficiency) {
+        alert("Please complete all fields.");
+        return;
+      }
+
+      document.getElementById("taskSection").style.display = "block";
+    }
+
+    function startTest() {
+      // Start timer
+      timerStart = Date.now();
+
+      // Get demographic info
+      const age = document.getElementById("age").value;
+      const proficiency = document.getElementById("proficiency").value;
+
+      // Choose random version
+      const versions = ['A', 'B', 'C', 'D'];
+      const chosenVersion = versions[Math.floor(Math.random() * versions.length)];
+
+      // Save data to Google Sheets via Apps Script
+      fetch("YOUR_SCRIPT_URL_HERE", {
+        method: "POST",
+        mode: "no-cors", // prevents CORS error (use 'cors' if your script returns JSON)
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          age,
+          proficiency,
+          version: chosenVersion,
+          timestamp: new Date().toISOString(),
+        }),
+      });
+
+      // Redirect to version
+      window.location.href = `${chosenVersion}.html?start=${timerStart}`;
+    }
+  </script>
+</body>
+</html>
