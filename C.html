@@ -1,4 +1,3 @@
-```
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -70,9 +69,62 @@
     .buy-btn:hover {
             background-color: #e64a19;
         }
+    /* Added styles for header and navigation */
+    .header {
+      background-color: #00a3e0;
+      padding: 10px 0;
+      color: white;
+    }
+    .logo-container {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      width: 80%;
+      margin: 0 auto;
+    }
+    .logo {
+      height: 40px;
+    }
+    .nav-links {
+      display: flex;
+      gap: 20px;
+    }
+    .nav-links a {
+      color: white;
+      text-decoration: none;
+      font-size: 14px;
+    }
+    .hero {
+      width: 100%;
+      margin-bottom: 30px;
+      text-align: center;
+      display: flex;
+      justify-content: center;
+    }
+    .hero img {
+      width: 80%;
+      max-height: 500px;
+      object-fit: contain;
+    }
   </style>
 </head>
 <body>
+    <!-- Added header and navigation bar -->
+    <header class="header">
+        <div class="logo-container">
+            <img src="assets/canarabank.png" alt="Canara HSBC Bank Logo" class="logo">
+            <div class="nav-links">
+                <a href="#">About Us</a> |
+                <a href="#">Contact Us</a>
+            </div>
+        </div>
+    </header>
+
+    <!-- Added hero/banner section -->
+    <div class="hero">
+        <img src="assets/banner.png" alt="Life insurance banner showing a family protected by a shield, with text 'PAY YOUR PREMIUMS TODAY PROTECT WHAT MATTERS MOST'">
+    </div>
+
     <div id="contentWrapper">
         <div class="container">
             <h1>Canara Bank Life Insurance</h1>
@@ -101,18 +153,18 @@
                 <details><summary>At what age should I purchase a Life Insurance Policy?</summary><p>You should buy Life Insurance as soon as possible, and definitely as soon as you start earning. Buy when you are young so that your family's future is secure and you get insurance at a cheaper cost. In insurance-cum-investment plans, buying early also gives a greater chance for your wealth to grow.</p></details>
                 <details><summary>How should I decide the number of years for which to pay Life Insurance Premium?</summary><p>Your payment term should depend on the financial goal for which you are saving. For your child's education, the policy should mature when your child enters college. For a large goal like retirement, your payment term should be as long as possible, to enable you to maximize your savings for your non-working years.</p></details>
                 <details><summary>What are the various charges in a Life Insurance Policy?</summary><p>The Government has defined the various charges that could be there in a Life Insurance policy, along with a maximum limit for each. Please refer to your policy documents or plan brochures for further details.</p></details>
-                <details><summary>Are premiums fixed for the entire term?</summary><p>Yes, once you buy a Term Plan, your premium remains fixed throughout the policy term, provided you pay on time and don’t change your plan features.</p></details>
-                <details><summary>What should I keep in mind while buying a child plan?</summary><p>When you save for your child's education or marriage, make sure that: The policy has a 'waiver of premium' feature so that, in case of your death, the policy continues and your child's corpus grows undisturbed. The Life Assured in the policy is the parent on whom the child is financially dependent. The policy continues until the child reaches the age when the funds are needed. You should also consider a plan that gives you a monthly payout to help you pay regular education fees. There are plans in which guaranteed staggered payouts are given during the last 4 or 5 years of the policy to take care of a child’s professional education.</p></details>
+                <details><summary>Are premiums fixed for the entire term?</summary><p>Yes, once you buy a Term Plan, your premium remains fixed throughout the policy term, provided you pay on time and don't change your plan features.</p></details>
+                <details><summary>What should I keep in mind while buying a child plan?</summary><p>When you save for your child's education or marriage, make sure that: The policy has a 'waiver of premium' feature so that, in case of your death, the policy continues and your child's corpus grows undisturbed. The Life Assured in the policy is the parent on whom the child is financially dependent. The policy continues until the child reaches the age when the funds are needed. You should also consider a plan that gives you a monthly payout to help you pay regular education fees. There are plans in which guaranteed staggered payouts are given during the last 4 or 5 years of the policy to take care of a child's professional education.</p></details>
                 <details><summary>Why should I pay my premiums on time?</summary><p>Paying your premiums on time ensures that you enjoy all your policy benefits, which include: Life cover. Opportunity to create a corpus. Moreover, certain policies reward you for paying your premiums on time in the form of additions to your fund. These are added to your fund every time you pay your premium.</p></details>
                 <details><summary>Do Saving Plans offer tax benefits?</summary><p>Yes. Saving Plans generally qualify for: Section 80C benefits on premiums paid. Section 10(10D) exemptions on maturity amounts, provided certain conditions are met. Term Plans also offer similar tax benefits.</p></details>
                 <details><summary>Can I choose the renewal payment date as per my convenience?</summary><p>Yes, Canara HSBC Life Insurance provides you the flexibility of choosing a renewal payment date. You can select any one date (5th, 10th, 15th, 20th, or 25th) for your premium payment by submitting a fresh NACH/ SI mandate. This option is not available in monthly mode cases.</p></details>
-                <details><summary>Do Saving or Term Plans require medical tests?</summary><p>Term Plans require medical tests, especially for higher coverage amounts or applicants above a certain age. Some Saving Plans offer “no medical test” options for low-value plans or younger applicants.</p></details>
+                <details><summary>Do Saving or Term Plans require medical tests?</summary><p>Term Plans require medical tests, especially for higher coverage amounts or applicants above a certain age. Some Saving Plans offer "no medical test" options for low-value plans or younger applicants.</p></details>
               </section>
               <section>
                 <h2>Disclaimers & Notices</h2>
                 <p class="small-text"><strong>The premium mentioned is for standard lives.</strong> Premium rates for tobacco users will vary.</p>
                 <p class="small-text"><strong>Medical charges</strong> will be deducted in case of non-issuance of the policy.</p>
-                <p class="small-text">Your actual premium will depend on the Company’s assessment of risks on your: <strong>Health, Lifestyle, Occupation.</strong> Annualized premium may vary for monthly mode. For more details on risk factors, terms, and conditions, please read the Sales Brochure carefully before concluding a sale.</p>
+                <p class="small-text">Your actual premium will depend on the Company's assessment of risks on your: <strong>Health, Lifestyle, Occupation.</strong> Annualized premium may vary for monthly mode. For more details on risk factors, terms, and conditions, please read the Sales Brochure carefully before concluding a sale.</p>
                 <p class="small-text"><strong>Premium Collection Policy:</strong> Collection of advance premium shall be allowed within the same financial year for the premium due in that financial year. Where the premium due in a financial year is being collected in the previous financial year, it may be collected for a maximum period of three months in advance. Such advance premium, if any, paid by the Policyholder shall not carry any interest.</p>
                 <p class="small-text"><strong>Tax benefits</strong> under the plan will be as per prevailing Income Tax laws and are subject to amendments. For tax-related queries, contact your independent tax advisor.</p>
                 <p class="small-text warning">⚠️ BEWARE OF SPURIOUS PHONE CALLS AND FRAUDULENT OFFERS: IRDAI or its officials do not involve in activities like: Selling insurance policies. Announcing bonus. Investment of premiums. Public receiving such phone calls are requested to lodge a police complaint.</p>
@@ -281,5 +333,3 @@
   ">Show Question Again</button>
 </body>
 </html>
-
-```
