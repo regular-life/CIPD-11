@@ -1,0 +1,630 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Canara Bank - Life Insurance</title>
+    <style>
+        /* Reset and Base Styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+        }
+
+        body {
+            color: #333;
+            line-height: 1.6;
+            background-color: #fff;
+        }
+
+        /* Header Styles */
+        .header {
+            background-color: #00a3e0;
+            /* Blue navigation bar */
+            padding: 10px 0;
+            color: white;
+        }
+
+        .logo-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            width: 80%;
+            margin: 0 auto;
+        }
+
+        .logo {
+            height: 40px;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 20px;
+        }
+
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            font-size: 14px;
+        }
+
+        /* Hero Section */
+        .hero {
+            width: 100%;
+            margin-bottom: 30px;
+            text-align: center;
+            display: flex;
+            justify-content: center;
+        }
+
+        .hero img {
+            width: 80%;
+            max-height: 500px;
+            object-fit: contain;
+        }
+
+        /* Container and Content */
+        .container {
+            width: 80%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px 0;
+        }
+
+        .content-section {
+            margin-bottom: 30px;
+        }
+
+        h1 {
+            color: #000;
+            margin-bottom: 15px;
+            font-size: 22px;
+        }
+
+        h2 {
+            color: #000;
+            margin-bottom: 15px;
+            font-size: 18px;
+        }
+
+        h3 {
+            color: #000;
+            margin-bottom: 15px;
+            font-size: 16px;
+            font-weight: bold;
+        }
+
+        p,
+        ul li {
+            margin-bottom: 15px;
+            font-size: 14px;
+        }
+
+        ul {
+            margin-left: 20px;
+            margin-bottom: 15px;
+        }
+
+        .buy-btn {
+            display: inline-block;
+            background-color: #ff5722;
+            color: white;
+            padding: 4px 10px;
+            border-radius: 4px;
+            text-decoration: none;
+            margin-top: 0;
+            transition: background-color 0.3s;
+            font-size: 14px;
+        }
+
+        .buy-btn:hover {
+            background-color: #e64a19;
+        }
+
+        /* FAQ and Disclaimer */
+        .faq-item {
+            margin-bottom: 20px;
+        }
+
+        .faq-question {
+            font-weight: bold;
+            margin-bottom: 5px;
+            font-size: 14px;
+        }
+
+        .disclaimer {
+            font-size: 12px;
+            margin-top: 30px;
+        }
+
+        .warning {
+            color: #000;
+            margin-bottom: 30px;
+        }
+
+        .footer-text {
+            padding: 20px;
+            text-align: left;
+            font-size: 12px;
+            border-top: 1px solid #ddd;
+            background-color: #fff;
+            margin-top: 30px;
+        }
+    </style>
+    <script>
+        function getQueryParam(name) {
+            const urlParams = new URLSearchParams(window.location.search);
+            return urlParams.get(name);
+        }
+
+        const startTimestamp = parseInt(getQueryParam("start"));
+        const startTime = new Date(startTimestamp);
+
+        let timerPaused = false;
+        let pausedAt = null;
+        let totalPausedTime = 0;
+
+        function showQuestion() {
+            document.getElementById("questionOverlay").style.display = "block";
+            document.getElementById("contentWrapper").style.filter = "blur(5px)";
+
+            if (!timerPaused) {
+                pausedAt = new Date();
+                timerPaused = true;
+            }
+        }
+
+        function resumeTask() {
+            document.getElementById("questionOverlay").style.display = "none";
+            document.getElementById("contentWrapper").style.filter = "none";
+
+            if (timerPaused) {
+                const resumedAt = new Date();
+                totalPausedTime += (resumedAt - pausedAt);
+                timerPaused = false;
+            }
+        }
+
+        function submitAnswer(selectedAnswer) {
+            const endTime = new Date();
+            const timeTaken = Math.round((endTime - startTime - totalPausedTime) / 1000);
+
+            const payload = {
+                age: localStorage.getItem("age"),
+                tech: localStorage.getItem("proficiency"),
+                version: localStorage.getItem("version"),
+                startTime: startTime.toISOString(),
+                endTime: endTime.toISOString(),
+                timeTaken: timeTaken,
+                answer: selectedAnswer
+            };
+
+            fetch("https://script.google.com/macros/s/AKfycbwQFuoFb2xELcGAeHRW2LOGqar-a_mukLQmQo_-KJg64SQ18CLQ2Y6s0889fHkLBVJu/exec", {
+                method: "POST",
+                mode: "no-cors",
+                headers: {
+                    "Content-Type": "application/json"
+                },
+                body: JSON.stringify(payload)
+            })
+                .then(() => {
+                    window.location.href = "thankyou.html";
+                })
+                .catch(err => {
+                    console.error("Submission failed:", err);
+                    alert("There was a problem saving your answer. Please try again.");
+                });
+        }
+    </script>
+</head>
+
+<body>
+    <div id="contentWrapper">
+        <!-- Header with blue navigation bar -->
+        <header class="header">
+            <div class="logo-container">
+                <img src="assets/canarabank.png" alt="Canara HSBC Bank Logo" class="logo" />
+                <div class="nav-links">
+                    <a href="#"><b>About Us</b></a> | <a href="#"><b>Contact Us</b></a>
+                </div>
+            </div>
+        </header>
+
+        <!-- Hero / Banner -->
+        <div class="hero">
+            <img src="assets/banner.png"
+                alt="Life insurance banner showing a family protected by a shield, with text 'PAY YOUR PREMIUMS TODAY PROTECT WHAT MATTERS MOST'" />
+        </div>
+
+        <!-- Main Content Container -->
+        <div class="container">
+            <!-- Life Insurance Overview -->
+            <div class="content-section">
+                <h1><b>Life Insurance</b></h1>
+                <p>
+                    In our endeavor to provide all financial services to our customers under one roof, the Bank entered
+                    into a joint venture with <b>HSBC Insurance (Asia Pacific) Holdings Limited</b> and <b>Punjab
+                        National Bank</b> to form <b>Canara HSBC Life Insurance Company Limited</b>.
+                </p>
+                <p>
+                    Backed by thorough research and a deep knowledge of the local market as well as socio-economic needs
+                    of the population provided by <b>Canara Bank</b>, Canara HSBC Life Insurance has a well-diversified
+                    portfolio of insurance products and solutions, tailored to the specific needs of the different
+                    social and economic strata of society.
+                </p>
+                <p>
+                    We at Canara Bank, acting as a Corporate Agent for Canara HSBC Life Insurance, aim to provide
+                    complete insurance solutions to our customers with <b>competitive products, lower charges, and
+                        prompt and efficient service</b>.
+                </p>
+            </div>
+
+            <!-- Why Invest Section with Bold Bullet Points -->
+            <div class="content-section">
+                <h1><b>Why Invest in a Life Insurance Policy?</b></h1>
+                <p>
+                    Life Insurance provides <b>safety</b> and <b>security</b> to the family of the insured by offering
+                    protection cover at the time of an unfortunate or untimely incident. We provide life insurance plans
+                    for various life stages to help you meet your insurance and saving needs:
+                </p>
+                <ul>
+                    <li><b>Offers comprehensive life cover</b></li>
+                    <li><b>Provides long-term savings</b></li>
+                    <li><b>Ensures life stage specific planning</b></li>
+                    <li><b>Makes for a good tax saving option</b></li>
+                </ul>
+            </div>
+
+            <!-- Saving Plans Section -->
+            <div class="content-section">
+                <h1><b>Saving Plans</b></h1>
+                <p>
+                    Saving Plans allow you to <b>create wealth for the future</b> and also offer <b>comprehensive life
+                        coverage</b> at the same time.
+                </p>
+                <a href="#" class="buy-btn" onclick="submitAnswer('Savings Plan')">Buy Plan</a>
+            </div>
+
+            <!-- Term Plans Section -->
+            <div class="content-section">
+                <h1><b>Term Plans</b></h1>
+                <p>
+                    Protection Plans are specially designed to provide <b>full protection and financial stability</b> to
+                    your family in case of any unforeseen events.
+                </p>
+                <a href="#" class="buy-btn" onclick="submitAnswer('Term Plan')">Buy Plan</a>
+            </div>
+
+            <!-- Frequently Asked Questions (FAQs) -->
+            <div class="content-section">
+                <h2><b>Frequently Asked Questions (FAQs)</b></h2>
+
+                <div class="faq-item">
+                    <p class="faq-question">At what age should I purchase a Life Insurance Policy?</p>
+                    <p>
+                        You should buy Life Insurance as soon as possible, and definitely as soon as you start earning.
+                        Buy when you are young so that your family's future is secure and you get insurance at a cheaper
+                        cost. In insurance-cum-investment plans, buying early also gives a greater chance for your
+                        wealth to grow.
+                    </p>
+                </div>
+
+                <div class="faq-item">
+                    <p class="faq-question">How should I decide the number of years for which to pay Life Insurance
+                        Premium?</p>
+                    <p>
+                        Your payment term should depend on the financial goal for which you are saving. For example:
+                    <ul>
+                        <li><b>For your child's education,</b> the policy should mature when your child enters college.
+                        </li>
+                        <li><b>For retirement,</b> your payment term should be as long as possible to maximize your
+                            savings for non-working years.</li>
+                    </ul>
+                    </p>
+                </div>
+
+                <div class="faq-item">
+                    <p class="faq-question">What are the various charges in a Life Insurance Policy?</p>
+                    <p>
+                        The Government has defined the various charges that could be included in a Life Insurance
+                        policy, along with a maximum limit for each. Please refer to your policy documents or plan
+                        brochures for further details.
+                    </p>
+                </div>
+
+                <div class="faq-item">
+                    <p class="faq-question">Are premiums fixed for the entire term?</p>
+                    <p>
+                        Yes, once you buy a Term Plan, your premium remains fixed throughout the policy term, provided
+                        you pay on time and don’t change your plan features.
+                    </p>
+                </div>
+
+                <div class="faq-item">
+                    <p class="faq-question">What should I keep in mind while buying a child plan?</p>
+                    <p>
+                        When saving for your child's education or marriage, make sure that:
+                    </p>
+                    <ul>
+                        <li>
+                            <b>The policy has a 'waiver of premium' feature</b> so that, in case of your death, the
+                            policy continues and your child's corpus grows undisturbed.
+                        </li>
+                        <li>
+                            <b>The Life Assured in the policy</b> is the parent on whom the child is financially
+                            dependent.
+                        </li>
+                        <li>
+                            <b>The policy continues until the child reaches the age</b> when the funds are needed.
+                        </li>
+                        <li>
+                            <b>Consider a plan that provides a monthly payout</b> to help you pay for regular education
+                            fees.
+                        </li>
+                        <li>
+                            <b>Guaranteed staggered payouts</b> may be available during the last 4–5 years of the policy
+                            to support your child’s professional education.
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="faq-item">
+                    <p class="faq-question">Why should I pay my premiums on time?</p>
+                    <p>
+                        Paying your premiums on time ensures that you enjoy all your policy benefits, including:
+                    </p>
+                    <ul>
+                        <li><b>Life cover</b></li>
+                        <li><b>The opportunity to create a corpus</b></li>
+                    </ul>
+                    <p>
+                        Moreover, certain policies reward you for timely payments with additions to your fund every time
+                        you pay your premium.
+                    </p>
+                </div>
+
+                <div class="faq-item">
+                    <p class="faq-question">Do Saving Plans offer tax benefits?</p>
+                    <p>
+                        Yes. Saving Plans generally qualify for:
+                    </p>
+                    <ul>
+                        <li><b>Section 80C benefits on premiums paid</b></li>
+                        <li><b>Section 10(10D) exemptions on maturity amounts</b> (provided conditions are met)</li>
+                    </ul>
+                    <p>
+                        Term Plans also offer similar tax benefits.
+                    </p>
+                </div>
+
+                <div class="faq-item">
+                    <p class="faq-question">Can I choose the renewal payment date as per my convenience?</p>
+                    <p>
+                        Yes, Canara HSBC Life Insurance provides you the flexibility of selecting a renewal payment
+                        date. You can choose any one date (5th, 10th, 15th, 20th, or 25th) for your premium payment by
+                        submitting a fresh NACH/SI mandate.
+                    </p>
+                    <p><i>This option is not available in monthly mode cases.</i></p>
+                </div>
+
+                <div class="faq-item">
+                    <p class="faq-question">Do Saving or Term Plans require medical tests?</p>
+                    <p>
+                    <ul>
+                        <li>Term Plans require medical tests, especially for higher coverage amounts or applicants above
+                            a certain age</li>
+                        <li>Some Saving Plans offer “no medical test” options for low-value plans or younger applicants
+                        </li>
+                    </ul>
+                    </p>
+                </div>
+            </div>
+
+            <!-- Disclaimer Section -->
+            <div class="content-section disclaimer">
+                <h1><b>Disclaimer</b></h1>
+                <ul>
+                    <li><b>Canara Bank (IRDAI Regn. No. CA0045)</b> is the Corporate Agent of the Insurer.</li>
+                    <li>The online journey is enabled through the Insurance Self Network platform (ISNP) of the Company,
+                        where <b>Canara Bank</b> acts as a market participant.</li>
+                    <li>Purchase of any insurance product is purely voluntary and is not linked to any other facility
+                        from the bank.</li>
+                    <li>The trade logo of <b>Canara HSBC Life Insurance Company Limited</b> is used under license with
+                        Canara Bank and <b>HSBC Group Management Services Limited</b>.</li>
+                </ul>
+                <br>
+                <h1><b>We pride in 170+ years of trusted service to our customers</b> backed by our key partners:</h1>
+                <ul>
+                    <li><b>Canara Bank</b> (founded in 1906)</li>
+                    <li><b>HSBC Insurance</b> (founded in 1970)</li>
+                    <li><b>99.23% Claims ratio:</b> Individual death claims settled and reported in public disclosures
+                        for FY 2023-24</li>
+                </ul>
+            </div>
+
+
+            <!-- Company Details Section -->
+            <div class="content-section">
+                <h2><b>Company Details</b></h2>
+                <p>
+                    The insurance products are offered and underwritten by <b>Insurer (IRDAI Regn. No. 136)</b> having
+                    its head office at<br />
+                    <b>139 P, Sector - 44, Gurugram - 122003, Haryana, India</b>
+                </p>
+            </div>
+
+            <!-- Additional Notes Section -->
+            <div class="content-section">
+                <h2><b>Additional Notes</b></h2>
+                <p>
+                    The premium mentioned is for standard lives. Premium rates for tobacco users will vary. Your actual
+                    premium will depend on the Company's assessment of risks on your:
+                </p>
+                <ul>
+                    <li><b>Health</b></li>
+                    <li><b>Lifestyle</b></li>
+                    <li><b>Occupation</b></li>
+                </ul>
+                <p>
+                    Annualized premium may vary for monthly mode. For more details on risk factors, terms, and
+                    conditions, please read the Sales Brochure carefully before concluding a sale.
+                </p>
+            </div>
+
+            <!-- Tax Benefits Section -->
+            <div class="content-section">
+                <h2><b>Tax Benefits</b></h2>
+                <p>
+                    Tax benefits under the plan will be as per the prevailing Income Tax laws and are subject to
+                    amendments from time to time. For tax-related queries, contact your independent tax advisor.
+                </p>
+            </div>
+
+            <!-- Premium Collection Policy Section -->
+            <div class="content-section">
+                <h2><b>Premium Collection Policy</b></h2>
+                <p>
+                <ul>
+                    <li>Collection of advance premium shall be allowed within the same financial year for the premium
+                        due in that financial year.</li>
+                    <li>However, where the premium due in a financial year is being collected in previous financial
+                        year, the premium may be collected for a maximum period of three months in advance of the due
+                        date of the premium.</li>
+                    <li>The premium so collected in advance shall only be adjusted on the due date of the premium.</li>
+                    <li>Such advance premium, if any, paid by the Policyholder shall not carry any interest.</li>
+                </ul>
+                </p>
+            </div>
+
+            <!-- Medical Charges Section -->
+            <div class="content-section">
+                <h2><b>Medical Charges</b></h2>
+                <p>
+                    Medical charges will be deducted in case of non-issuance of the policy.
+                </p>
+            </div>
+
+            <!-- Term Plans Details Section -->
+            <div class="content-section">
+                <h2><b>Term Plans</b></h2>
+                <p>
+                    Term Plans are pure protection life insurance products that provide a lump sum payout to the nominee
+                    in the event of the policyholder's death during the policy term.<br /><br />
+                    They:
+                </p>
+                <ul>
+                    <li><b>Do not provide maturity or survival benefits</b> unless a Return of Premium feature is
+                        included (comes at an additional cost)</li>
+                    <li><b>Are not intended for savings or investment purpose</b></li>
+                    <li><b>Typically do not offer a surrender value</b></li>
+                </ul>
+            </div>
+
+            <!-- Saving Plans Details Section -->
+            <div class="content-section">
+                <h2><b>Saving Plans</b></h2>
+                <p>
+                    Saving Plans are insurance products that offer a combination of life cover and long-term savings
+                    benefits. These plans may include:
+                </p>
+                <ul>
+                    <li><b>Guaranteed return</b></li>
+                    <li><b>Bonus</b></li>
+                    <li><b>Investment-linked components</b> (depending on the plan type)</li>
+                </ul>
+                <br>
+                <h3>The maturity benefit is payable only if the policyholder survives the term and all premiums are paid
+                on time.</h3>
+                <p>⚠️ Early surrender of a Saving Plan may result in low or no returns, particularly in
+                    the early policy years. Certain plans include lock-in periods after which partial withdrawals may be
+                    allowed.
+                </p>
+            </div>
+
+            <!-- Fraud Warning Section -->
+            <div class="content-section warning">
+                <h1><b>BEWARE OF SPURIOUS PHONE CALLS AND FRAUDULENT OFFERS</b></h1>
+                <p>
+                    IRDAI or its officials do not engage in activities such as:
+                </p>
+                <ul>
+                    <li><b>Selling insurance policies</b></li>
+                    <li><b>Announcing bonus</b></li>
+                    <li><b>Investing premiums</b></li>
+                </ul>
+                <p>
+                    ⚠️ Public receiving such phone calls are requested to lodge a police complaint.
+                </p>
+            </div>
+
+            <!-- Footer Information Section -->
+            <div class="content-section warning">
+                <h3><b>Canara HSBC Life Insurance Company Limited</b></h3>
+                <h3><b>IRDAI Registration no: 136</b></h3>
+                <p>
+                    <i>Data collected by the company is subject to the Terms &amp; Conditions laid out in the Privacy
+                    Policy.<br />
+                    ©2022 Canara HSBC Life Insurance Company Limited
+                    </i>
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Overlay Modal -->
+    <div id="questionOverlay" style="
+        display: none;
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: rgba(255, 255, 255, 0.95);
+        z-index: 9999;
+        padding: 40px;
+        font-size: 16px;
+        overflow-y: auto;
+      ">
+        <h2>Reminder: Your Task</h2>
+        <p>
+            You are helping a 28-year-old friend who has just started earning. They want to:<br /><br />
+            - Build savings for long-term goals like retirement<br />
+            - Have life insurance protection<br />
+            - Avoid undergoing a medical test if possible<br />
+            - Prefer tax benefits on their premium payments<br /><br />
+            Help them choose a suitable plan.
+        </p>
+        <button onclick="resumeTask()" style="
+          margin-top: 20px;
+          padding: 10px 20px;
+          background-color: #00a3e0;
+          color: white;
+          border: none;
+          border-radius: 5px;
+          cursor: pointer;
+        ">
+            Return to Task
+        </button>
+    </div>
+
+    <!-- Floating Button to Show Question -->
+    <button onclick="showQuestion()" style="
+        position: fixed;
+        bottom: 20px;
+        right: 20px;
+        background-color: crimson;
+        color: white;
+        padding: 10px 15px;
+        border: none;
+        border-radius: 30px;
+        cursor: pointer;
+        z-index: 999;
+      ">
+        Show Question Again
+    </button>
+</body>
+
+</html>
