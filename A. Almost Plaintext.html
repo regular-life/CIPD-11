@@ -1,0 +1,368 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Canara Bank - Life Insurance</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+        }
+
+        /* 
+      1. Make the entire page white by removing the gray background. 
+    */
+        body {
+            color: #333;
+            line-height: 1.6;
+            background-color: #fff;
+            /* No more gray, now white */
+        }
+
+        .header {
+            background-color: #00a3e0;
+            padding: 10px 0;
+            color: white;
+        }
+
+        .logo-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            width: 80%;
+            margin: 0 auto;
+        }
+
+        /* Increase the logo height if needed */
+        .logo {
+            height: 40px;
+            /* adjust as needed */
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 20px;
+        }
+
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            font-size: 14px;
+        }
+
+        /*
+      2. Remove any background color on hero so it blends seamlessly with the white 
+         background. Adjust height or spacing as desired.
+    */
+        .hero {
+            width: 100%;
+            /* Removed background-color here */
+            margin-bottom: 30px;
+            text-align: center;
+            display: flex;
+            justify-content: center;
+        }
+
+        .hero img {
+            width: 80%;
+            max-height: 500px;
+            object-fit: contain;
+        }
+
+        /*
+      3. Return to a centered container with no background color. 
+         This keeps the text area constrained horizontally but invisible.
+    */
+        .container {
+            width: 80%;
+            /* or 90%, whichever you prefer */
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px 0;
+            /* background-color: transparent; (this is default if not specified) */
+        }
+
+        h1 {
+            color: #000;
+            margin-bottom: 15px;
+            font-size: 22px;
+        }
+
+        h2 {
+            color: #000;
+            margin-bottom: 15px;
+            font-size: 18px;
+        }
+
+        h3 {
+            color: #000;
+            margin-bottom: 15px;
+            font-size: 16px;
+            font-weight: bold;
+        }
+
+        p,
+        ul li {
+            margin-bottom: 15px;
+            font-size: 14px;
+        }
+
+        .content-section {
+            margin-bottom: 30px;
+        }
+
+        ul {
+            margin-left: 20px;
+            margin-bottom: 15px;
+        }
+
+        .buy-btn {
+            display: inline-block;
+            background-color: #ff5722;
+            color: white;
+            padding: 4px 10px;
+            border-radius: 4px;
+            text-decoration: none;
+            margin-top: 0px;
+            transition: background-color 0.3s;
+            font-size: 14px;
+        }
+
+        .buy-btn:hover {
+            background-color: #e64a19;
+        }
+
+        .faq-item {
+            margin-bottom: 20px;
+        }
+
+        .faq-question {
+            font-weight: bold;
+            margin-bottom: 5px;
+            font-size: 14px;
+        }
+
+        .disclaimer {
+            font-size: 12px;
+            margin-top: 30px;
+        }
+
+        .warning {
+            color: #000;
+            margin-bottom: 30px;
+        }
+
+        .footer-text {
+            padding: 20px;
+            text-align: left;
+            font-size: 12px;
+            border-top: 1px solid #ddd;
+            background-color: #fff;
+            margin-top: 30px;
+        }
+    </style>
+</head>
+
+<body>
+    <header class="header">
+        <div class="logo-container">
+            <img src="assets/canarabank.png" alt="Canara HSBC Bank Logo" class="logo">
+            <div class="nav-links">
+                <a href="#">About Us</a> |
+                <a href="#">Contact Us</a>
+            </div>
+        </div>
+    </header>
+
+    <div class="hero">
+        <img src="assets/banner.png"
+            alt="Life insurance banner showing a family protected by a shield, with text 'PAY YOUR PREMIUMS TODAY PROTECT WHAT MATTERS MOST'">
+    </div>
+
+    <div class="container">
+        <!-- Main content starts here -->
+        <div class="content-section">
+            <h1>Life Insurance</h1>
+            <p>
+                In our endeavor to provide all financial services to our customers under one roof, the Bank entered into
+                a joint venture with HSBC Insurance (Asia Pacific) Holdings Limited and Punjab National Bank to form
+                Canara HSBC Life Insurance Company Limited.
+            </p>
+            <p>
+                Backed by thorough research and a deep knowledge of the local market as well as socio-economic needs of
+                the population provided by Canara Bank, Canara HSBC Life Insurance has a well diversified portfolio of
+                insurance products and solutions, tailored to the specific needs of the different social and economic
+                strata of the society. We at Canara Bank, acting as a Corporate Agent for Canara HSBC Life Insurance,
+                aim to provide complete insurance solutions to our customers with competitive products, lower charges
+                and prompt and efficient service.
+            </p>
+        </div>
+
+
+
+        <div class="content-section">
+            <h1>Why Invest in a Life Insurance Policy?</h1>
+            <p>
+                Life insurance provides safety and security to the family of the insured by providing protection cover
+                at
+                the time of unfortunate/untimely incident. We provide life insurance plans for various life stages
+                to help you meet your insurance &amp; saving needs:
+            </p>
+            <ul>
+                <li>Offers comprehensive life cover</li>
+                <li>Provides long-term savings</li>
+                <li>Helps with children's education</li>
+                <li>Makes for a good tax saving option</li>
+            </ul>
+        </div>
+
+        <div class="content-section">
+            <h1>Saving Plans</h1>
+            <p>Saving Plans allow you to create wealth for future and also offer comprehensive life coverage at the same
+                time.</p>
+            <a href="#" class="buy-btn">Buy Plan</a>
+        </div>
+
+        <div class="content-section">
+            <h1>Term Plans</h1>
+            <p>Protection Plans are specially designed to provide full protection &amp; financial stability to your
+                family in case of any unforeseen events.</p>
+            <a href="#" class="buy-btn">Buy Plan</a>
+        </div>
+
+        <div class="content-section">
+            <h2>Frequently Asked Questions (FAQs)</h2>
+
+            <div class="faq-item">
+                <p class="faq-question">At what age should I purchase a Life Insurance Policy?</p>
+                <p>You should buy Life Insurance as soon as possible, and definitely as soon as you start earning. Buy when you are young so that your family's future is secure and you get insurance at a cheaper cost. In insurance-cum-investment plans, buying early also gives a greater chance for your wealth to grow.</p>
+            </div>
+
+            <div class="faq-item">
+                <p class="faq-question">How should I decide the number of years for which to pay Life Insurance Premium?
+                </p>
+                <p>Your payment term should depend on the financial goal for what you are saving for. For your child's education, the policy should mature when your child enters college. For a large goal like retirement, your payment term should be as long as possible, to enable you to maximize your savings to care of your non-working years.</p>
+            </div>
+
+            <div class="faq-item">
+                <p class="faq-question">What are the various charges in a Life Insurance Policy?</p>
+                <p>The Government has defined the various charges that could be there in a Life Insurance policy, along with a maximum limit for each. Please refer to your policy documents or plan brochures for further details.</p>
+            </div>
+
+            <div class="faq-item">
+                <p class="faq-question">Term Plan Question</p>
+                <p>Answer for it.</p>
+            </div>
+
+            <div class="faq-item">
+                <p class="faq-question">What should I keep in mind while buying a child plan?</p>
+                <p>When you save for your child's education or marriage, make sure that: The policy has a 'waiver of premium' feature so that, in case of your death, the policy continues and your child's corpus grows undisturbed The Life Assured in the policy is the parent on whom the child is financially dependent. The policy continues until the child reaches the age when the funds are needed you should also consider a plan that gives you a monthly payout to help you pay regular education fees. There are plans in which guaranteed staggered payouts are given during the last 4 or 5 years of the policy to take care of a child’s professional education. So you do not have to worry about higher education fees at that juncture.</p>
+            </div>
+
+            <div class="faq-item">
+                <p class="faq-question">Why should I pay my premiums on time?</p>
+                <p>Paying your premiums on time ensures that you enjoy all your policy benefits which would include life cover and the opportunity to create a corpus. Moreover, certain policies reward you for paying your premiums on time in the form of additions to your fund. These are added to your fund every time you pay your premium.</p>
+            </div>
+
+            <div class="faq-item">
+                <p class="faq-question">Do Saving plans offer tax benefits?</p>
+                <p>Yes. Saving Plans generally qualify for Section 80C benefits on premiums paid and Section 10(10D) exemptions on maturity amounts, provided certain conditions are met. Term Plans also offer similar tax benefits.</p>
+            </div>
+
+            <div class="faq-item">
+                <p class="faq-question">Can I choose the renewal payment date as per my convenience?</p>
+                <p>Yes, Canara HSBC Life Insurance provides you the flexibility of choosing renewal payment date. You can select any one date (5th, 10th, 15th 20th or 25th) for your premium payment by submitting fresh NACH/ SI mandate. This option is not available in monthly mode cases.</p>
+            </div>
+
+            <div class="faq-item">
+                <p class="faq-question">Do Saving Plans require medical tests?</p>
+                <p>Term Plans require medical tests, especially for higher coverage amounts or applicants above a certain age. Some Saving Plans offer “no medical test” options for low-value plans or younger applicants.</p>
+            </div>
+        </div>
+
+        <div class="disclaimer">
+            <h1>Disclaimer</h1>
+            <p>Canara Bank (IRDAI Regn. No. CA0045) is the Corporate Agent of the Insurer.</p>
+            <p>The online journey is being enabled through the Insurance Self Network platform (ISNP) of the Company
+                where Canara Bank is a market participant as the corporate agent of the insurer.</p>
+            <p>Purchase of any insurance products by a bank's customer is purely voluntary and is not linked to
+                availment of any other facility from the bank.</p>
+            <p>Trade Logo of Canara HSBC Life Insurance Company Limited is used under license with Canara Bank and HSBC
+                Group Management Services Limited.</p>
+            <p>We pride in 170+ years of trusted service to our customers backed by our key partners Canara Bank
+                (founded in 1906) and HSBC Insurance (founded in 1970). 99.23% Claims ratio : Individual death claims
+                settled and reported in public disclosures for FY 2023-24.</p>
+            <p>The Insurance products are offered and underwritten by Insurer (IRDAI Regn. No. 136) having its head
+                office at 139 P, Sector - 44, Gurugram - 122003, Haryana, India.</p>
+            <p>The premium mentioned is for standard lives. Premium rates for tobacco users will vary. Your actual
+                premium will depend on the Company's assessment of risks on your health, lifestyle, occupation, etc.
+                Annualized premium may vary for monthly mode.</p>
+            <p>For more details on risk factors, terms and conditions please read the Sales Brochure carefully before
+                concluding a sale.</p>
+            <p>
+                Website: www.canarahsbclife.com<br>
+                Call (Toll free no.): 1800-103-003/1800-891-003<br>
+                SMS: 9779030003<br>
+                Missed Call: 8071262709<br>
+                Email: customerservice@canarahsbclife.in
+            </p>
+            <p>
+                Tax benefits under the plan will be as per the prevailing Income Tax laws and are subject to amendments
+                from
+                time to time. For tax related queries, contact your independent tax advisor.
+            </p>
+            <p>Collection of advance premium shall be allowed within the same financial year for the premium due in that
+                financial year.</p>
+            <p>Saving Plans are designed for individuals seeking both protection and savings in one product. They are
+                ideal for long-term goals and come with options for bonus additions, guaranteed returns, and maturity
+                benefits.</p>
+            <p>Term Plans provide pure protection and do not return any maturity amount unless they have
+                return-of-premium riders, which come at an additional cost.</p>
+            <p>However, where the premium due in a financial year is being collected in previous financial year, the
+                premium may be collected for a maximum period of three months in advance of the due date of the premium.
+                The premium so collected in advance shall only be adjusted on the due date of the premium. Such advance
+                premium, if any, paid by the Policyholder shall not carry any interest.</p>
+            <p>Medical charges will be deducted in case of non-issuance of the policy.</p>
+            <p>
+                Term Plans are pure protection life insurance products that provide a lump sum payout to the nominee in
+                the
+                event of the policyholder's death during the policy term. They do not provide maturity or survival
+                benefits
+                unless a Return of Premium feature is included. These plans are not intended for savings or investment
+                purposes and typically do not offer a surrender value.
+            </p>
+            <p>
+                Saving Plans are insurance products that offer a combination of life cover and long-term savings
+                benefits.
+                These plans may include guaranteed returns, bonuses, or investment-linked components, depending on the
+                plan
+                type. The maturity benefit is payable only if the policyholder survives the term and all premiums are
+                paid
+                on time. Early surrender of a Saving Plan may result in low or no returns, particularly in the early
+                policy
+                years. Certain plans include lock-in periods, after which partial withdrawals may be allowed.
+            </p>
+        </div>
+
+        <div class="warning">
+            <h1><strong>BEWARE OF SPURIOUS PHONE CALLS AND FICTITIOUS / FRAUDULENT OFFERS</strong></h1>
+            <p>IRDAI or its officials do not involve in activities like selling insurance policies, announcing bonus or
+                investment of premiums. Public receiving such phone calls are requested to lodge a police complaint.</p>
+        </div>
+
+        <div class="warning">
+            <h1>Canara HSBC Life Insurance Company Limited</h1>
+            <h1>IRDAI Registration no: 136</h1>
+            <p>Data collected by the company is subject to the Terms &amp; Conditions laid out in the Privacy Policy.
+            </p>
+            <p>©2022 Canara HSBC Life Insurance Company Limited</p>
+        </div>
+        <!-- Main content ends here -->
+    </div>
+</body>
+
+</html>
